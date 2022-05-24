@@ -25,8 +25,11 @@ Route::middleware(['auth:sanctum'])->group(function () {
     Route::put('/cancion/{id}','CancionController@update');    //Actualizar cancion
     Route::delete('/cancion/{id}','CancionController@delete');    //Eliminar cancion
 
+    //Rutas de Playlists
     Route::post('/cancion/playlist/','PlaylistCancionController@agregarCancion');    //Agrega una cancion a una playlst
-    Route::get('/canciones/playlist/{id}','PlaylistCancionController@cancionesDePlaylist'); //Mostrar canciones e una playlist
+    Route::get('/canciones/playlist/{id}','PlaylistCancionController@cancionesDePlaylist'); //Mostrar canciones de una playlist
+
+    Route::delete('/cancion/playlist/{id}','PlaylistCancionController@eliminarCancionDePlaylist'); //Elimnar una cancion de una playlist, id= id de la playllist
 });
 
 
