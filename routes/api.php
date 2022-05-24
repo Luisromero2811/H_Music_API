@@ -31,8 +31,7 @@ Route::middleware(['auth:sanctum'])->group(function () {
 
 
 
-//Funciones por hacer
-//Cantidad de cancione de una playlist
+Route::get('/music/{music}/{extension}','MusicController@getSong');
 
 
 

@@ -62,9 +62,9 @@ return [
             'visibility' => 'public',
         ],
 
-        'publicPdf' => [
+        'publicMusic' => [
             'driver' => 'local',
-            'root' => storage_path('app/public/pdf'),
+            'root' => storage_path('app/public/music'),
             'url' => env('APP_URL').'/storage',
             'visibility' => 'public',
         ],
