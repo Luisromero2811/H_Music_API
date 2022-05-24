@@ -32,5 +32,23 @@ class UserController extends Controller
         } 
 
     }
+
+    function update(Request $request){
+        $user = User::where('id',$request->user()->id)->first();
+
+        if($request->input('nombre')){
+            $user->nombre = $request->input('nombre');
+        }
+
+        if($request->input('email')){
+            $user->email = $request->input('email');
+        }
+
+        if($user->save()){
+            return response()->json(["status"=>TRUE,"user"=>$user],200);
+        }else{
+            return response()->json(["status"=>FALSE,"message"=>"No se pudo actualizar el user"],200);
+        }
+    }
     
 }
