@@ -31,6 +31,7 @@ class PlaylistCancionController extends Controller
         $canciones = DB::table('playlists_canciones')
             ->join('canciones', 'canciones.id', '=', 'playlists_canciones.cancion_id')
             ->select('canciones.*')
+            ->where('playlists_canciones.playlist_id',$id)
             ->get();
 
         if($canciones){

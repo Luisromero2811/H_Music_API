@@ -30,6 +30,11 @@ Route::middleware(['auth:sanctum'])->group(function () {
     Route::get('/canciones/playlist/{id}','PlaylistCancionController@cancionesDePlaylist'); //Mostrar canciones de una playlist
 
     Route::delete('/cancion/playlist/{id}','PlaylistCancionController@eliminarCancionDePlaylist'); //Elimnar una cancion de una playlist, id= id de la playllist
+    
+    //Rutas de playlist guardadas por el usuario
+    Route::post('/user/playlist','PlaylistUserController@mgPlaylist'); // Guardar playlist que le gusta a un usuario
+    Route::delete('/user/playlist/{id}','PlaylistUserController@eliminarMgPlaylist'); //Eliminar una playlist que guardo el usuario = parametro {playlist_id}
+    Route::get('/user/playlist/{id}','PlaylistUserController@listarMgPlaylist'); //Listar las playlist que le gustan al usuario = paramaetro {user_Id}
 });
 
 
