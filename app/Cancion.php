@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+//Este es un comentario puesto desde una rama diferente a master
 
 class Cancion extends Model
 {
