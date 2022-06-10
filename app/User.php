@@ -9,6 +9,8 @@ use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable
 {
+    //Este es el modelo del usuario
+    
     use HasApiTokens, Notifiable;
 
     /**
