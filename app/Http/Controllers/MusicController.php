@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use App\Cancion;
+use Illuminate\Support\Facades\DB;
 
 class MusicController extends Controller
 {
@@ -19,5 +21,25 @@ class MusicController extends Controller
             return response()->json(["status"=>FALSE,"message"=>"cancion no encontrada"],404);
         }
         return Storage::disk('publicMusic')->get($name);*/
+    }
+
+    function getAllMusics(){
+        try{
+            $musics = DB::table('canciones')
+            ->join('generos','generos.id','=','canciones.genero_id')
+            ->select(
+            'canciones.id',
+            'canciones.Nombre', 
+            'canciones.Formato',
+            'generos.Genero',
+            'canciones.Autor',
+            'canciones.Duracion',
+            'canciones.Imagen',
+            'canciones.Musica')
+            ->get();
+            return response()->json($musics);
+        }catch(Exception $e){
+            return response()->json(["status"=>FALSE,"message"=>$e->getMessage()]);
+        }
     }
 }
