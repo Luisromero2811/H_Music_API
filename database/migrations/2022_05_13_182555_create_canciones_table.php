@@ -15,9 +15,14 @@ class CreateCancionesTable extends Migration
     {
         Schema::create('canciones', function (Blueprint $table) {
             $table->id();
-            $table->string('nombre', 80)->unique();
-            $table->string('genero', 30);
-            $table->string('mp3');
+            $table->string('Nombre', 80)->unique();
+            $table->string('Formato');
+            $table->unsignedBigInteger('genero_id');
+            $table->foreign('genero_id')->references('id')->on('generos')->onDelele('cascade')->onUpdate("cascade");
+            $table->string('Autor');
+            $table->string('Duracion');
+            $table->string('Imagen');
+            $table->string('Musica');
             $table->timestamps();
         });
     }
