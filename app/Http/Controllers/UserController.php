@@ -15,7 +15,6 @@ class UserController extends Controller
             'nombre'=>'required|string|min:1|max:30',
             'email'=>'required|min:1|email',
             'password'=>'required|string|min:1',
-            'rol'=>'required|max:5',
         ]);
 
         $user = new User;
