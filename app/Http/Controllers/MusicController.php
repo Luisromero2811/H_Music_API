@@ -42,4 +42,57 @@ class MusicController extends Controller
             return response()->json(["status"=>FALSE,"message"=>$e->getMessage()]);
         }
     }
+    
+    function updateMusic(Request $request){
+        
+        $music = Cancion::where('id',$request->id)->first();
+
+        if($request->input('Nombre')){
+            $music->Nombre = $request->input('Nombre');
+        }
+
+        if($request->input('Formato')){
+            $music->Formato = $request->input('Formato');
+        }
+
+        if($request->input('Genero')){
+            $music->Genero = $request->input('Genero');
+        }
+
+        if($request->input('Autor')){
+            $music->Autor = $request->input('Autor');
+        }
+
+        if($request->input('Duracion')){
+            $music->Duracion = $request->input('Duracion');
+        }
+
+        if($request->input('Imagen')){
+            $music->Imagen = $request->input('Imagen');
+        }
+
+        if($request->input('Musica')){
+            $music->Musica = $request->input('Musica');
+        }
+
+        if($music->save()){
+            return response()->json(["status"=>TRUE,"music"=>$music],200);
+        }else{
+            return response()->json(["status"=>FALSE,"message"=>"No se pudo actualizar el user"],200);
+        }
+    }
+
+    function getMusic($id) {
+        $music = Cancion::where('id',$id)->first();
+        return response()->json($music);
+    }
+
+    function deleteMusic($id) {
+        $music = Cancion::where('id',$id)->first();
+        if ($music->delete()){
+            return response()->json(["status"=>true]);
+        }else{
+            return response()->json(["status"=>false]);
+        }
+    }
 }
