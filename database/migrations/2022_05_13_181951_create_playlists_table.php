@@ -17,7 +17,7 @@ class CreatePlaylistsTable extends Migration
             $table->id();
             $table->unsignedBigInteger('user_id');
             $table->string('nombre', 80)->unique();
-            $table->string('descripcion', 100);
+            $table->string('descripcion', 255);
             $table->foreign('user_id')->references('id')->on('users')->onDelele('cascade')->onUpdate("cascade");
             $table->timestamps();
         });
