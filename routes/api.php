@@ -22,6 +22,7 @@ Route::middleware(['auth:sanctum'])->group(function () {
     //CRUD canciones para admin
     Route::post('/cancion','CancionController@create');    //Crear cancion
     Route::get('/cancion','CancionController@listar');    //Listar cancion
+    Route::get('/cancion/genero/{id}','CancionController@listarPorGenero');    //Listar cancion por genero
     Route::put('/cancion/{id}','CancionController@update');    //Actualizar cancion
     Route::delete('/cancion/{id}','CancionController@delete');    //Eliminar cancion
 

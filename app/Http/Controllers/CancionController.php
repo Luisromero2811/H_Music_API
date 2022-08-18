@@ -36,7 +36,7 @@ class CancionController extends Controller
         $cancion->Autor = $request->input('Autor');
         $cancion->Duracion = $request->input('Duracion');
 
-        return response()->json($cancion);
+        
 
         if($cancion->save()){
             return response()->json(["status"=>TRUE,"cancion"=>$cancion],201);
@@ -48,6 +48,17 @@ class CancionController extends Controller
     function listar(Request $request){
 
         $canciones = Cancion::all();
+
+        if($canciones){
+            return response()->json(["status"=>TRUE,"canciones"=>$canciones],200);
+        }else{
+            return response()->json(["status"=>FALSE,"message"=>"Algo salio mal"],200);
+        }
+    }
+
+    function listarPorGenero(Request $request, $id){
+
+        $canciones = Cancion::where('genero_id', $id)->get();
 
         if($canciones){
             return response()->json(["status"=>TRUE,"canciones"=>$canciones],200);
