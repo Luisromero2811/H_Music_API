@@ -19,9 +19,7 @@ class AuthController extends Controller
         $user = User::where('email', $request->input('email'))->first();
         
         if (! $user || ! Hash::check($request->input('password'), $user->password)) {
-            throw ValidationException::withMessages([
-                'email' => ['The provided credentials are incorrect.'],
-            ]);
+            return response()->json(["status"=>FALSE,"message"=>"Email o contraseña incorrecta"],200);
         }
         
         if($user->rol == "admin"){

@@ -13,9 +13,8 @@ class UserController extends Controller
 
         $request->validate([
             'nombre'=>'required|string|min:1|max:30',
-            'email'=>'required|min:1',
+            'email'=>'required|min:1|email',
             'password'=>'required|string|min:1',
-            'rol'=>'required|max:5',
         ]);
 
         $user = new User;
@@ -23,7 +22,7 @@ class UserController extends Controller
         $user->nombre = $request->input('nombre');
         $user->email = $request->input('email');
         $user->password = Hash::make($request->input('password'));
-        $user->rol = $request->input('rol');
+        $user->rol = "user";
 
         if($user->save()){
             return response()->json(["status"=>TRUE,"user"=>$user],201);
