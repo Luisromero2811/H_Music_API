@@ -41,6 +41,13 @@ Route::middleware(['auth:sanctum'])->group(function () {
 
 Route::get('/music/{music}/{extension}','MusicController@getSong');
 Route::get('/music/all','MusicController@getAllMusics');
-
-
+Route::put('/music/edit','MusicController@updateMusic');
+Route::get('/music/{id}','MusicController@getMusic');
+Route::get('/generos/all','GeneroController@getGeneros');
+Route::delete('/music/{id}','MusicController@deleteMusic');
+Route::get('/token', function (Request $request) {
+ 
+    $token = csrf_token();
+    return $token;
+});
 
