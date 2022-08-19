@@ -23,12 +23,12 @@ class AuthController extends Controller
         }
         
         if($user->rol == "admin"){
-            $token = $user->createToken($request->email,['admin:admin','user:user'])->plainTextToken; //Crea el token y se asignan permisos donde el request->email sea igual al que estan en la bd, despue retornas el token en texto plano 
+            $token = $user->createToken($request->email,['admin:admin','user:user'])->plainTextToken; 
         }else{ 
-        $token = $user->createToken($request->email,['user:user'])->plainTextToken; //Crea el token y se asignan permisos donde el request->email sea igual al que estan en la bd, despue retornas el token en texto plano 
+        $token = $user->createToken($request->email,['user:user'])->plainTextToken; 
         }
         
-        return response()->json(["status"=>TRUE,"token"=>$token,"rol"=>$user->rol,"id"=>$user->id],200);
+        return response()->json(["status"=>TRUE,"token"=>$token,"rol"=>$user->rol,"id"=>$user->id,"user"=>$user],200);
     }
 
 
