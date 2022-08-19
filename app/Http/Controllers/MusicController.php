@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\DB;
 class MusicController extends Controller
 {
     function getSong(Request $request){
-        $filepath = storage_path() . '/app/public/music/' . $request->music . '.' . $request->extension;
+        $filepath = storage_path() . '/app/public/music/' . $request->music;
         try{
             $file = file_exists($filepath);
         }catch(FileNotFoundException $e){

@@ -40,8 +40,8 @@ Route::middleware(['auth:sanctum'])->group(function () {
 
 
 
-Route::get('/music/{music}/{extension}','MusicController@getSong');
-Route::get('/music/all','MusicController@getAllMusics');
+Route::get('/music/{music}','MusicController@getSong');
+Route::get('/musics','MusicController@getAllMusics');
 Route::put('/music/edit','MusicController@updateMusic');
 Route::get('/music/{id}','MusicController@getMusic');
 Route::get('/generos/all','GeneroController@getGeneros');

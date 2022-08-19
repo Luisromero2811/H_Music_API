@@ -22,13 +22,13 @@ class CancionController extends Controller
         //$nameMusica = time().'.'.explode('/',explode(':', substr($cancion->Musica,0,strpos($cancion->Musica,';')))[1])[1];
         $musica = $request->file('Musica');
         $filenamemusica = time().'.'.$musica->extension();
-        $musica->move('publicMusic',$filenamemusica);
+        $musica->move(storage_path() . '/app/public/music/',$filenamemusica);
         //Insertar Cancion
         $cancion->Musica = $filenamemusica;
 
         $imagen = $request->file('Imagen');
         $filenameimagen = time().'.'.$imagen->extension();
-        $imagen->move('publicImage',$filenameimagen);
+        $imagen->move(storage_path() . '/app/public/music/' ,$filenameimagen);
         //Insertar Cancion
         $cancion->Imagen = $filenameimagen;
 
